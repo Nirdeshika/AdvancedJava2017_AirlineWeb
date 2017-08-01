@@ -75,7 +75,7 @@ public class AirlineServlet extends HttpServlet {
                 SortedSet<Flight> searchedFlights = new TreeSet<>();
                 int count = 0;
                 for (Flight flight : flights) {
-                    if (flight.getSource().equals(source) && flight.getDestination().equals(destination)) {
+                    if (flight.getSource().equalsIgnoreCase(source) && flight.getDestination().equalsIgnoreCase(destination)) {
                         searchedFlights.add(flight);
                         count++;
                     }

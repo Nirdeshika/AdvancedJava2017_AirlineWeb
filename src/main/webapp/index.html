@@ -25,25 +25,36 @@
     is created by the project archetype.
 </h2>
 
-
 <div>
-    <form method="get" action="flights">
-        List all key/value pairs <input type="submit" value="Submit"/>
+    <form action="flights">
+        <b>Name of the airline</b> <input name="name" type="text" size="25" title="AirlineName"/>
+        <input type="submit" value="Get all the flights"/>
     </form>
 </div>
 
 <div>
-    <form method="get" action="flights">
-        List value for key <input name="key" type="text" size="10" title="key"/>
-        <input type="submit" value="Submit"/>
+    <form method="post" action="flights?name=Delta">
+    <b><u>Create a new Flight:</u></b><br>
+        <table>
+            <tr><th style="text-align: right">Name of the Airline:</th><td><input name="name" type="text" size="25" title="Airline Name"/></td></tr>
+            <tr><th style="text-align: right">Flight Number:</th><td><input name="flightNumber" type="text" size="25" title="Flight Number"/></td></tr>
+            <tr><th style="text-align: right">Source:</th><td><input name="src" type="text" size="25" title="Source Airport Code"/></td></tr>
+            <tr><th style="text-align: right"> Depart Time:</th><td><input name="departTime" type="text" size="25" title="Depart Time"/></td></tr>
+            <tr><th style="text-align: right"> Destination:</th><td><input name="dest" type="text" size="25" title="Destination Airport Code"/></td></tr>
+            <tr><th style="text-align: right"> Arrival Time:</th><td><input name="arriveTime" type="text" size="25" title="Arrival Time"/></td></tr>
+        </table>
+        <input type="submit" value="Create"/>
     </form>
 </div>
 
 <div>
-    <form method="post" action="flights">
-        Create a new key/value pair <input name="key" type="text" size="10" title="key"/> /
-        <input name="value" type="text" size="10" title="value"/>
-        <input type="submit" value="Submit"/>
+    <form action="flights">
+        <table>
+            <tr><th style="text-align: right">Name of the Airline:</th><td><input name="name" type="text" size="25" title="Airline Name"/></td></tr>
+            <tr><th style="text-align: right">Source:</th><td><input name="src" type="text" size="25" title="Source Airport Code"/></td></tr>
+            <tr><th style="text-align: right"> Destination:</th><td><input name="dest" type="text" size="25" title="Destination Airport Code"/></td></tr>
+        </table>
+        <input type="submit" value="Search"/>
     </form>
 </div>
 

@@ -262,6 +262,34 @@ public class Project1 {
             }
         }
 
+        if (countOfArgs > 5) {
+            if ((args[4].equals("-host") || args[4].equals("-port")) && args[5].charAt(0) == '-') {
+                throw new IllegalOptionException("-host/-port option should be followed by a fileName.");
+            } else if (args[5].charAt(0) == '-') {
+                options.add(args[5]);
+            } else if (args[4].equals("-host")) {
+                options.add(args[5]);
+                host = args[5];
+            } else if (args[4].equals("-port")) {
+                options.add(args[5]);
+                portAsString = args[5];
+            }
+        }
+
+
+        if (countOfArgs > 6) {
+            if ((args[5].equals("-host") || args[5].equals("-port")) && args[6].charAt(0) == '-') {
+                throw new IllegalOptionException("-host/-port option should be followed by a fileName.");
+            } else if (args[6].charAt(0) == '-') {
+                options.add(args[6]);
+            } else if (args[5].equals("-host")) {
+                options.add(args[6]);
+                host = args[6];
+            } else if (args[5].equals("-port")) {
+                options.add(args[6]);
+                portAsString = args[6];
+            }
+        }
         return options;
     }
 
@@ -285,7 +313,7 @@ public class Project1 {
         }
 
         if (options.contains("-search") && options.contains("-print")) {
-            throw new IllegalOptionException("Both -search anf -print options should not be mentioned together.");
+            throw new IllegalOptionException("Both -search and -print options should not be mentioned together.");
         }
 
         if (indexOfHostOption != -1 && (indexOfHostOption + 1) < options.size()) {

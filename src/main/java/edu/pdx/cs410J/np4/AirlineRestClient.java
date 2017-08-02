@@ -37,9 +37,7 @@ public class AirlineRestClient extends HttpRequestHelper {
         Response response = post(url, "name", args[0 + numberOfOptions], "flightNumber", args[1 + numberOfOptions],
                 "src", args[2 + numberOfOptions], "departTime", args[3 + numberOfOptions] + " " + args[4 + numberOfOptions] + " " + args[5 + numberOfOptions],
                 "dest", args[6 + numberOfOptions], "arriveTime", args[7 + numberOfOptions] + " " + args[8 + numberOfOptions] + " " + args[9 + numberOfOptions]);
-        if (response.getCode() == HttpServletResponse.SC_OK) {
-            System.out.println(response.getContent());
-        } else {
+        if (response.getCode() != HttpServletResponse.SC_OK) {
             System.out.println("Error occurred while adding a new flight. " + response.getCode());
         }
     }
@@ -54,9 +52,7 @@ public class AirlineRestClient extends HttpRequestHelper {
     public void searchFLight(String[] args, int numberOfOptions) throws IOException {
 
         Response response = get(url, "name", args[0 + numberOfOptions], "src", args[1 + numberOfOptions], "dest", args[2 + numberOfOptions]);
-        if (response.getCode() == HttpServletResponse.SC_OK) {
-            System.out.println(response.getContent());
-        } else {
+        if (response.getCode() != HttpServletResponse.SC_OK) {
             System.out.println("Error occurred while searching for a flight. " + response.getCode());
         }
 

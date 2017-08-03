@@ -52,7 +52,9 @@ public class AirlineRestClient extends HttpRequestHelper {
     public void searchFLight(String[] args, int numberOfOptions) throws IOException {
 
         Response response = get(url, "name", args[0 + numberOfOptions], "src", args[1 + numberOfOptions], "dest", args[2 + numberOfOptions]);
-        if (response.getCode() != HttpServletResponse.SC_OK) {
+        if (response.getCode() == HttpServletResponse.SC_OK) {
+            System.out.println(response.getContent());
+        } else {
             System.out.println("Error occurred while searching for a flight. " + response.getCode());
         }
 

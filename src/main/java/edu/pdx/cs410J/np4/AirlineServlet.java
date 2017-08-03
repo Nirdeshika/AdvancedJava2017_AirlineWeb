@@ -72,23 +72,17 @@ public class AirlineServlet extends HttpServlet {
                     return;
                 }
                 Collection<Flight> flights = airline.getFlights();
-                SortedSet<Flight> searchedFlights = new TreeSet<>();
-                int count = 0;
+                Airline airlineSearch = new Airline(nameOfTheAirline);
                 for (Flight flight : flights) {
                     if (flight.getSource().equalsIgnoreCase(source) && flight.getDestination().equalsIgnoreCase(destination)) {
-                        searchedFlights.add(flight);
-                        count++;
+                        airlineSearch.addFlight(flight);
                     }
                 }
-                if (count == 0) {
+                if (airlineSearch.getFlights().size() == 0) {
                     printWriter.println("No flights between " + source + " and " + destination + " are found.");
                     printWriter.flush();
                 } else {
-                    for (Flight flight : searchedFlights) {
-                        printWriter.println(flight);
-                        printWriter.flush();
-                    }
-
+                    printWriter.println(prettyPrinter.getPrettyPrintContent(airlineSearch));
                 }
             }
         }
